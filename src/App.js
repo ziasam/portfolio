@@ -288,7 +288,7 @@ const ProjectsSection = () => {
         "Used microservice architecture.",
         "Developed Razor page development.",
       ],
-      link: "https://convocation.cu.ac.bd/index.html",
+      link: "https://app.convocation.cu.ac.bd/",
     },
     {
       name: "MediaCentrix",
@@ -317,7 +317,7 @@ const ProjectsSection = () => {
         "Managed database and wrote necessary SQL functions.",
         "Wrote proper API documentation.",
       ],
-      link: null,
+      link: "https://cddportaldev.lbh.one/account/login",
     },
     {
       name: "CommEngine",
