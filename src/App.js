@@ -128,14 +128,14 @@ const HeroSection = ({ scrollToSection }) => {
     github: "https://github.com/ziasam",
     leetcode: "https://leetcode.com/u/ziasam0702/",
     email: "mailto:ziauddinsameer@gmail.com",
-    phone: "tel:+880521325457",
+    phone: "tel:+8801521325457",
   };
 
   return (
     <section id="about" className="text-center py-20 bg-white dark:bg-gray-800 shadow-xl rounded-xl -mt-16 transition-colors duration-500">
       <div className="flex justify-center mb-6">
         <img
-          src="/profile.png"
+          src={`${process.env.PUBLIC_URL}/profile.png`}
           alt="Ziauddin Sameer Chowdhury"
           className="rounded-full w-36 h-36 border-4 border-gray-200 dark:border-gray-700 object-cover"
         />
@@ -166,7 +166,7 @@ const HeroSection = ({ scrollToSection }) => {
       </p>
 
       <a
-        href="/Resume_Ziauddin_Sameer_Chowdhury.pdf"
+        href={`${process.env.PUBLIC_URL}/Resume_Ziauddin_Sameer_Chowdhury.pdf`}
         download="Resume_Ziauddin_Sameer_Chowdhury.pdf"
         className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-blue-500 transition-colors duration-300 transform hover:-translate-y-1"
       >
@@ -228,7 +228,7 @@ const ProjectsSection = () => {
         "Used microservice architecture.",
         "Developed Razor page development.",
       ],
-      link: "#", // Placeholder link
+      link: "https://convocation.cu.ac.bd/index.html",
     },
     {
       name: "MediaCentrix",
@@ -238,7 +238,7 @@ const ProjectsSection = () => {
         "Performed data manipulation and gathering.",
         "Maintained HIPAA compliance.",
       ],
-      link: "#", // Placeholder link
+      link: null,
     },
     {
       name: "ESS-AGRO",
@@ -248,7 +248,7 @@ const ProjectsSection = () => {
         "Developed complex algorithm for data manipulation.",
         "Developed a proper communication system between the main APP and POS APP.",
       ],
-      link: "#", // Placeholder link
+      link: "https://ess.xpertsolvers.com/",
     },
     {
       name: "DiscoverHub (SaaS Project)",
@@ -257,7 +257,7 @@ const ProjectsSection = () => {
         "Managed database and wrote necessary SQL functions.",
         "Wrote proper API documentation.",
       ],
-      link: "#", // Placeholder link
+      link: null,
     },
     {
       name: "CommEngine",
@@ -266,7 +266,7 @@ const ProjectsSection = () => {
         "Added new features upon client's request.",
         "Developed and modified elastic search queries.",
       ],
-      link: "#", // Placeholder link
+      link: "https://commengine.xyz/",
     },
   ];
 
@@ -281,7 +281,7 @@ const ProjectsSection = () => {
                 <Layers className="mr-2 text-green-600 dark:text-green-400" size={20} />
                 {project.name}
               </h3>
-              {project.link && (
+              {project.link && project.link !== "#" && project.link !== "" && (
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   <Link size={20} />
                 </a>
