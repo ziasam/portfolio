@@ -15,6 +15,7 @@ import {
   Book,
   Moon,
   Sun,
+  GraduationCap
 } from 'lucide-react';
 
 const App = () => {
@@ -47,18 +48,32 @@ const App = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects', 'skills', 'contact'];
-      let currentSection = 'about';
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= element.offsetTop - 100) {
-          currentSection = section;
+      const sections = ['about', 'education', 'experience', 'projects', 'skills', 'contact'];
+      const offset = 150; 
+
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
+        setActiveSection('contact');
+        return;
+      }
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const elementTop = element.offsetTop - offset;
+          const elementBottom = elementTop + element.offsetHeight;
+
+          if (window.scrollY >= elementTop && window.scrollY < elementBottom) {
+            setActiveSection(sectionId);
+            return;
+          }
         }
       }
-      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -67,6 +82,7 @@ const App = () => {
       <Navbar activeSection={activeSection} scrollToSection={scrollToSection} toggleTheme={toggleTheme} theme={theme} />
       <main className="container mx-auto px-4 py-8">
         <HeroSection scrollToSection={scrollToSection} />
+        <EducationSection />
         <ExperienceSection />
         <ProjectsSection />
         <SkillsSection />
@@ -86,6 +102,7 @@ const Navbar = ({ activeSection, scrollToSection, toggleTheme, theme }) => (
       <div className="flex items-center space-x-6">
         <div className="hidden md:flex space-x-6 text-gray-600 dark:text-gray-400">
           <NavLink id="about" active={activeSection === 'about'} onClick={() => scrollToSection('about')}>About</NavLink>
+          <NavLink id="education" active={activeSection === 'education'} onClick={() => scrollToSection('education')}>Education</NavLink>
           <NavLink id="experience" active={activeSection === 'experience'} onClick={() => scrollToSection('experience')}>Experience</NavLink>
           <NavLink id="projects" active={activeSection === 'projects'} onClick={() => scrollToSection('projects')}>Projects</NavLink>
           <NavLink id="skills" active={activeSection === 'skills'} onClick={() => scrollToSection('skills')}>Skills</NavLink>
@@ -164,14 +181,47 @@ const HeroSection = ({ scrollToSection }) => {
       <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-8 px-4">
         Experienced Software Engineer skilled in Monolithic and Microservices architecture. Proven ability to design, develop, and maintain robust applications. Passionate about full-stack development, system design, and algorithms.
       </p>
-
       <a
         href={`${process.env.PUBLIC_URL}/Resume_Ziauddin_Sameer_Chowdhury.pdf`}
         download="Resume_Ziauddin_Sameer_Chowdhury.pdf"
         className="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-blue-500 transition-colors duration-300 transform hover:-translate-y-1"
       >
-        <Download className="mr-2" size={20} /> Download CV
+        <Download className="mr-2" size={20} /> Download Resume
       </a>
+    </section>
+  );
+};
+
+// Education section
+const EducationSection = () => {
+  const education = [
+    {
+      institution: "Chittagong University of Engineering and Technology, Chattogram",
+      degree: "B.Sc. in Computer Science and Engineering",
+      duration: "2016-2021",
+    },
+    {
+      institution: "Chittagong Engineering University School and College, Chattogram",
+      degree: "Higher Secondary Certificate (HSC)",
+      duration: "2013-2015",
+    },
+  ];
+
+  return (
+    <section id="education" className="py-20">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Educational Background</h2>
+      <div className="space-y-8 max-w-4xl mx-auto">
+        {education.map((item, index) => (
+          <div key={index} className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg transition-colors duration-500">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center mb-2">
+              <GraduationCap className="mr-3 text-purple-600 dark:text-purple-400" size={24} />
+              {item.institution}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">{item.degree}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-md">{item.duration}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
@@ -195,10 +245,10 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-20 bg-gray-100 rounded-xl dark:bg-gray-800 transition-colors duration-500">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Work Experience</h2>
       {experiences.map((exp, index) => (
-        <div key={index} className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl max-w-4xl mx-auto transition-colors duration-500">
+        <div key={index} className="bg-white dark:bg-gray-800 p-8 max-w-4xl mx-auto transition-colors duration-500">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center mb-2">
             <Briefcase className="mr-3 text-blue-600 dark:text-blue-400" size={24} />
             {exp.title} at {exp.company}
@@ -271,7 +321,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-500">
+    <section id="projects" className="py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Projects</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
@@ -312,7 +362,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20 bg-gray-100 rounded-xl dark:bg-gray-800 transition-colors duration-500">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Technical Skills</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {Object.entries(skills).map(([category, skillList], index) => (
@@ -336,6 +386,23 @@ const SkillsSection = () => {
       </div>
     </section>
   );
+};
+
+// Function to handle API calls with exponential backoff for resilience
+const callApiWithRetry = async (url, options, retries = 5, delay = 100) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (error) {
+      // Log the error for debugging but don't stop the loop
+      console.error(`Attempt ${i + 1} failed: ${error.message}`);
+    }
+    await new Promise(resolve => setTimeout(resolve, delay * (2 ** i)));
+  }
+  throw new Error('All retries failed to connect to the API.');
 };
 
 // Contact form component
@@ -365,7 +432,7 @@ const ContactForm = () => {
       // Simulate API call to send the message
       console.log('Submitting form data:', formData);
 
-      // --- Start of Gemini API call simulation ---
+      // --- Start of Gemini API call with retry logic ---
       const prompt = `Simulate a response from Ziauddin Sameer Chowdhury to a new message. The message is from a person with the name "${formData.name}", and their message is: "${formData.message}". Please craft a polite, professional, and friendly acknowledgment that the message has been received and they will respond shortly. The response should be concise.`;
 
       let chatHistory = [];
@@ -374,25 +441,19 @@ const ContactForm = () => {
       const apiKey = "";
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
       
-      const response = await fetch(apiUrl, {
+      const result = await callApiWithRetry(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      // --- End of Gemini API call with retry logic ---
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
-      }
-
-      const result = await response.json();
-      
       let generatedMessage = "Thank you for your message! I have received it and will get back to you shortly.";
       if (result.candidates && result.candidates.length > 0 &&
           result.candidates[0].content && result.candidates[0].content.parts &&
           result.candidates[0].content.parts.length > 0) {
         generatedMessage = result.candidates[0].content.parts[0].text;
       }
-      // --- End of Gemini API call simulation ---
       
       setMessage(generatedMessage);
       setFormData({ name: '', email: '', subject: '', message: '' });
