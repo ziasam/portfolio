@@ -279,7 +279,7 @@ const ExperienceSection = () => {
 const ProjectsSection = () => {
   const projects = [
     {
-      name: "Chittagong University Convocation Management",
+      name: "Convocation Management (CU)",
       duration: "2025",
       details: [
         "Integrated payment gateway (SSL Commerz).",
