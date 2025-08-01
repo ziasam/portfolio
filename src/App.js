@@ -49,7 +49,7 @@ const App = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['about', 'education', 'experience', 'projects', 'skills', 'contact'];
-      const offset = 150; 
+      const offset = 150;
 
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) {
         setActiveSection('contact');
@@ -71,7 +71,7 @@ const App = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -147,6 +147,7 @@ const HeroSection = ({ scrollToSection }) => {
     email: "mailto:ziauddinsameer@gmail.com",
     phone: "tel:+8801521325457",
   };
+  const phoneNumberDisplay = "+880 1521 325457";
 
   return (
     <section id="about" className="text-center py-20 bg-white dark:bg-gray-800 shadow-xl rounded-xl -mt-16 transition-colors duration-500">
@@ -173,9 +174,18 @@ const HeroSection = ({ scrollToSection }) => {
         <a href={socialLinks.email} aria-label="Email" className="hover:text-red-500 dark:hover:text-red-400 transition-colors duration-300">
           <Mail size={28} />
         </a>
-        <a href={socialLinks.phone} aria-label="Phone" className="hover:text-green-500 dark:hover:text-green-400 transition-colors duration-300">
-          <Phone size={28} />
-        </a>
+        {/* --- START: MODIFIED PHONE LINK --- */}
+        <div className="relative group">
+          <a href={socialLinks.phone} aria-label="Phone" className="hover:text-green-500 dark:hover:text-green-400 transition-colors duration-300">
+            <Phone size={28} />
+          </a>
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-800 text-white text-sm rounded-md shadow-lg
+                 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            {phoneNumberDisplay}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-gray-800"></div>
+          </div>
+        </div>
+        {/* --- END: MODIFIED PHONE LINK --- */}
       </div>
 
       <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-8 px-4">
@@ -440,7 +450,7 @@ const ContactForm = () => {
       const payload = { contents: chatHistory };
       const apiKey = "";
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-      
+
       const result = await callApiWithRetry(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -450,11 +460,11 @@ const ContactForm = () => {
 
       let generatedMessage = "Thank you for your message! I have received it and will get back to you shortly.";
       if (result.candidates && result.candidates.length > 0 &&
-          result.candidates[0].content && result.candidates[0].content.parts &&
-          result.candidates[0].content.parts.length > 0) {
+        result.candidates[0].content && result.candidates[0].content.parts &&
+        result.candidates[0].content.parts.length > 0) {
         generatedMessage = result.candidates[0].content.parts[0].text;
       }
-      
+
       setMessage(generatedMessage);
       setFormData({ name: '', email: '', subject: '', message: '' });
 
@@ -476,7 +486,7 @@ const ContactForm = () => {
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
             <input
               type="text"
-              id="name"
+              _id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -539,9 +549,8 @@ const ContactForm = () => {
         </form>
         {message && (
           <div
-            className={`mt-6 p-4 rounded-md ${
-              isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
-            }`}
+            className={`mt-6 p-4 rounded-md ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
+              }`}
           >
             {message}
           </div>
