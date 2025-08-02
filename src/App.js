@@ -188,9 +188,15 @@ const HeroSection = ({ scrollToSection }) => {
         {/* --- END: MODIFIED PHONE LINK --- */}
       </div>
 
-      <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-8 px-4">
-        Experienced Software Engineer skilled in Monolithic and Microservices architecture. Proven ability to design, develop, and maintain robust applications. Passionate about full-stack development, system design, and algorithms.
+      <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-8 px-4 text-center">
+        Experienced Software Engineer with 3+ years in SAAS and Fintech industries. Skilled in building scalable solutions using .NET, Angular, MSSQL, and PostgreSQL.
+        Proficient in designing RESTful APIs and crafting responsive UIs with a focus on performance and reliability.
+        Strong foundation in both monolithic and microservices architecture.
+        Committed to clean, maintainable code and agile (Scrum) practices.
+        Enjoys solving complex problems in system design and backend optimization.
+        Driven by quality, precision, and long-term value in every project.
       </p>
+
       <a
         href={`${process.env.PUBLIC_URL}/Resume_Ziauddin_Sameer_Chowdhury.pdf`}
         download="Resume_Ziauddin_Sameer_Chowdhury.pdf"
