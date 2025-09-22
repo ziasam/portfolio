@@ -212,12 +212,12 @@ const HeroSection = ({ scrollToSection }) => {
 const EducationSection = () => {
   const education = [
     {
-      institution: "Chittagong University of Engineering and Technology, Chattogram",
+      institution: "Chittagong University of Engineering and Technology",
       degree: "B.Sc. in Computer Science and Engineering",
       duration: "2016-2021",
     },
     {
-      institution: "Chittagong Engineering University School and College, Chattogram",
+      institution: "Chittagong Engineering University School and College",
       degree: "Higher Secondary Certificate (HSC)",
       duration: "2013-2015",
     },
@@ -369,7 +369,7 @@ const ProjectsSection = () => {
 // Skills section
 const SkillsSection = () => {
   const skills = {
-    "Programming Languages": ["C#", "JAVA", "JavaScript", "TypeScript", "C++", "Python"],
+    "Programming Languages": ["C#", "JAVA", "JavaScript", "TypeScript"],
     "Web Technologies": ["RESTful APIs", "Microservices", "HTML5"],
     "Frameworks": ["ASP.NET Boilerplate", "Spring Boot", "Angular", "ABP.IO"],
     "Programming Paradigms": ["OOP", "Functional Programming", "AOP"],
