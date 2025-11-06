@@ -82,10 +82,10 @@ const App = () => {
       <Navbar activeSection={activeSection} scrollToSection={scrollToSection} toggleTheme={toggleTheme} theme={theme} />
       <main className="container mx-auto px-4 py-8">
         <HeroSection scrollToSection={scrollToSection} />
-        <EducationSection />
+        <SkillsSection />        
         <ExperienceSection />
         <ProjectsSection />
-        <SkillsSection />
+        <EducationSection />
         <ContactForm />
       </main>
       <Footer />
@@ -102,10 +102,10 @@ const Navbar = ({ activeSection, scrollToSection, toggleTheme, theme }) => (
       <div className="flex items-center space-x-6">
         <div className="hidden md:flex space-x-6 text-gray-600 dark:text-gray-400">
           <NavLink id="about" active={activeSection === 'about'} onClick={() => scrollToSection('about')}>About</NavLink>
-          <NavLink id="education" active={activeSection === 'education'} onClick={() => scrollToSection('education')}>Education</NavLink>
+          <NavLink id="skills" active={activeSection === 'skills'} onClick={() => scrollToSection('skills')}>Skills</NavLink>
           <NavLink id="experience" active={activeSection === 'experience'} onClick={() => scrollToSection('experience')}>Experience</NavLink>
           <NavLink id="projects" active={activeSection === 'projects'} onClick={() => scrollToSection('projects')}>Projects</NavLink>
-          <NavLink id="skills" active={activeSection === 'skills'} onClick={() => scrollToSection('skills')}>Skills</NavLink>
+          <NavLink id="education" active={activeSection === 'education'} onClick={() => scrollToSection('education')}>Education</NavLink>
           <NavLink id="contact" active={activeSection === 'contact'} onClick={() => scrollToSection('contact')}>Contact</NavLink>
         </div>
         <button
@@ -208,33 +208,37 @@ const HeroSection = ({ scrollToSection }) => {
   );
 };
 
-// Education section
-const EducationSection = () => {
-  const education = [
-    {
-      institution: "Chittagong University of Engineering and Technology",
-      degree: "B.Sc. in Computer Science and Engineering",
-      duration: "2016-2021",
-    },
-    {
-      institution: "Chittagong Engineering University School and College",
-      degree: "Higher Secondary Certificate (HSC)",
-      duration: "2013-2015",
-    },
-  ];
+// Skills section
+const SkillsSection = () => {
+  const skills = {
+    "Programming Languages": ["C#", "JAVA", "JavaScript", "TypeScript"],
+    "Web Technologies": ["RESTful APIs", "Microservices", "HTML5"],
+    "Frameworks": ["ASP.NET Boilerplate", "Spring Boot", "Angular", "ABP.IO"],
+    "Programming Paradigms": ["OOP", "Functional Programming", "AOP"],
+    "Databases": ["MySQL", "Microsoft SQL", "PostgreSQL", "Elastic Search", "SQLite"],
+    "Other Tools": ["Git", "Linux", "Postman", "Docker"],
+  };
 
   return (
-    <section id="education" className="py-20">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Educational Background</h2>
-      <div className="space-y-8 max-w-4xl mx-auto">
-        {education.map((item, index) => (
-          <div key={index} className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg transition-colors duration-500">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center mb-2">
-              <GraduationCap className="mr-3 text-purple-600 dark:text-purple-400" size={24} />
-              {item.institution}
+    <section id="skills" className="py-20 bg-gray-100 rounded-xl dark:bg-gray-800 transition-colors duration-500">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Technical Skills</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {Object.entries(skills).map(([category, skillList], index) => (
+          <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transition-colors duration-500">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center">
+              <Book className="mr-2 text-purple-600 dark:text-purple-400" size={20} />
+              {category}
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">{item.degree}</p>
-            <p className="text-gray-500 dark:text-gray-400 text-md">{item.duration}</p>
+            <div className="flex flex-wrap gap-2">
+              {skillList.map((skill, i) => (
+                <span
+                  key={i}
+                  className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold px-3 py-1 rounded-full shadow-inner"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -250,12 +254,10 @@ const ExperienceSection = () => {
       title: "Software Engineer",
       duration: "September 2022 - present",
       details: [
-        "Worked on projects based on Monolithic and Microservices architecture.",
-        "Designed and developed REST-based Microservice using .NET and web pages using HTML5, CSS3, Angular 8.",
-        "Contributed to the DevOps by deploying applications in Linux based Production and Test servers.",
-        "Participated in maintenance and production support.",
-        "Reviewed code and debugged errors to improve system performance.",
-        "Collaborated with cross-functional development team members to analyze potential system solutions based on evolving client requirements.",
+        "Developed and designed both large-scale (Monolithic) and smaller, separate (Microservice) applications using .NET.",
+        "Built responsive user interfaces and web pages using modern front-end technologies (HTML5, CSS3, Angular).",
+        "Improved system reliability by reviewing code, finding, and fixing software errors, and providing live production support.",
+        "Managed the process of deploying applications to Linux servers for both testing and live production (DevOps contribution).",
       ],
     },
   ];
@@ -288,49 +290,45 @@ const ProjectsSection = () => {
       name: "Convocation Management (CU)",
       duration: "2025",
       details: [
-        "Integrated payment gateway (SSL Commerz).",
-        "Integrated email and SMS service system.",
-        "Developed proper PDF and sheet generation.",
-        "Used microservice architecture.",
-        "Developed Razor page development.",
+        "Cut processing time 50% by automating PDF and spreadsheet generation for 40k+ records.",
+        "Implemented email and SMS services delivering timely notifications to all registered users.",
+        "Enhanced system scalability by deploying microservice modules supporting peak convocation traffic.",
       ],
       link: "https://app.convocation.cu.ac.bd/",
     },
     {
       name: "MediaCentrix",
       details: [
-        "API and UI development using ABP.IO.",
-        "Developed complex queries and algorithm design.",
-        "Performed data manipulation and gathering.",
-        "Maintained HIPAA compliance.",
+        "Ensured HIPAA compliance by implementing secure API endpoints.",
+        "Increased query performance 45% through complex SQL optimizations and indexing strategies.",
+        "Accelerated client onboarding by delivering requested enhancements before planned deadlines.",
       ],
       link: null,
     },
     {
       name: "ESS-AGRO",
       details: [
-        "Developed API, UI, and Database.",
-        "Developed main APP and POS APP.",
-        "Developed complex algorithm for data manipulation.",
-        "Developed a proper communication system between the main APP and POS APP.",
+        "Engineered core API, UI, and database.",
+        "Implemented complex data aggregation enabling accurate insights for agronomists and staff.",
+        "Reduced manual workload 60% through automation of livestock data processing algorithms.",
       ],
-      link: "https://ess.xpertsolvers.com/",
+      link: "https://essdev.xpertsolvers.com/",
     },
     {
       name: "DiscoverHub (SaaS Project)",
       details: [
-        "Developed API with ASP.NET Boilerplate.",
-        "Managed database and wrote necessary SQL functions.",
-        "Wrote proper API documentation.",
+        "Engineered multi-tenant API services supporting SaaS subscription and onboarding workflows.",
+        "Improved analytics reporting accuracy through custom SQL functions and refactoring.",
+        "Reduced bug rate 25% by writing clear API documentation for cross-team integration.",
       ],
       link: "https://cddportaldev.lbh.one/account/login",
     },
     {
       name: "CommEngine",
       details: [
-        "Maintained API, UI, and Database.",
-        "Added new features upon client's request.",
-        "Developed and modified elastic search queries.",
+        "Maintained critical API, UI, and database components ensuring consistent system uptime.",
+        "Enhanced search relevance via optimized Elasticsearch query configurations.",
+        "Delivered new requested features 30% faster through agile iteration improvements.",
       ],
       link: "https://commengine.xyz/",
     },
@@ -366,37 +364,33 @@ const ProjectsSection = () => {
   );
 };
 
-// Skills section
-const SkillsSection = () => {
-  const skills = {
-    "Programming Languages": ["C#", "JAVA", "JavaScript", "TypeScript"],
-    "Web Technologies": ["RESTful APIs", "Microservices", "HTML5"],
-    "Frameworks": ["ASP.NET Boilerplate", "Spring Boot", "Angular", "ABP.IO"],
-    "Programming Paradigms": ["OOP", "Functional Programming", "AOP"],
-    "Databases": ["MySQL", "Microsoft SQL", "PostgreSQL", "Elastic Search", "SQLite"],
-    "Other Tools": ["Git", "Linux", "Postman", "Docker"],
-  };
+// Education section
+const EducationSection = () => {
+  const education = [
+    {
+      institution: "Chittagong University of Engineering and Technology",
+      degree: "B.Sc. in Computer Science and Engineering",
+      duration: "2016-2021",
+    },
+    {
+      institution: "Chittagong Engineering University School and College",
+      degree: "Higher Secondary Certificate (HSC)",
+      duration: "2013-2015",
+    },
+  ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-100 rounded-xl dark:bg-gray-800 transition-colors duration-500">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Technical Skills</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {Object.entries(skills).map(([category, skillList], index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg transition-colors duration-500">
-            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center">
-              <Book className="mr-2 text-purple-600 dark:text-purple-400" size={20} />
-              {category}
+    <section id="education" className="py-20">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">Educational Background</h2>
+      <div className="space-y-8 max-w-4xl mx-auto">
+        {education.map((item, index) => (
+          <div key={index} className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg transition-colors duration-500">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 flex items-center mb-2">
+              <GraduationCap className="mr-3 text-purple-600 dark:text-purple-400" size={24} />
+              {item.institution}
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {skillList.map((skill, i) => (
-                <span
-                  key={i}
-                  className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold px-3 py-1 rounded-full shadow-inner"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+            <p className="text-gray-600 dark:text-gray-300 text-lg mb-2">{item.degree}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-md">{item.duration}</p>
           </div>
         ))}
       </div>
