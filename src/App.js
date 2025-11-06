@@ -213,7 +213,7 @@ const SkillsSection = () => {
   const skills = {
     "Programming Languages": ["C#", "JAVA", "JavaScript", "TypeScript"],
     "Web Technologies": ["RESTful APIs", "Microservices", "HTML5"],
-    "Frameworks": ["ASP.NET Boilerplate", "Spring Boot", "Angular", "ABP.IO"],
+    "Frameworks": [".NET Core", "Spring Boot", "Angular", "ABP.IO"],
     "Programming Paradigms": ["OOP", "Functional Programming", "AOP"],
     "Databases": ["MySQL", "Microsoft SQL", "PostgreSQL", "Elastic Search", "SQLite"],
     "Other Tools": ["Git", "Linux", "Postman", "Docker"],
@@ -250,7 +250,7 @@ const SkillsSection = () => {
 const ExperienceSection = () => {
   const experiences = [
     {
-      company: "XpertSolvers Ltd, Dhaka",
+      company: "XpertSolvers Ltd, (Remote)",
       title: "Software Engineer",
       duration: "September 2022 - present",
       details: [
@@ -287,8 +287,7 @@ const ExperienceSection = () => {
 const ProjectsSection = () => {
   const projects = [
     {
-      name: "Convocation Management (CU)",
-      duration: "2025",
+      name: "Convocation Management (Chittagong University) - 2025",
       details: [
         "Cut processing time 50% by automating PDF and spreadsheet generation for 40k+ records.",
         "Implemented email and SMS services delivering timely notifications to all registered users.",
