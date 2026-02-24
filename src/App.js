@@ -189,7 +189,7 @@ const HeroSection = ({ scrollToSection }) => {
       </div>
 
       <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-8 px-4 text-center">
-        Experienced Software Engineer with 3+ years in SAAS and Fintech industries. Skilled in building scalable solutions using .NET, Angular, MSSQL, and PostgreSQL.
+        Experienced Software Engineer with 4 years in SAAS and Fintech industries. Skilled in building scalable solutions using .NET, Angular, MSSQL, and PostgreSQL.
         Proficient in designing RESTful APIs and crafting responsive UIs with a focus on performance and reliability.
         Strong foundation in both monolithic and microservices architecture.
         Committed to clean, maintainable code and agile (Scrum) practices.
@@ -251,13 +251,17 @@ const ExperienceSection = () => {
   const experiences = [
     {
       company: "XpertSolvers Ltd, (Remote)",
-      title: "Software Engineer",
+      title: "Senior Software Engineer",
       duration: "September 2022 - present",
       details: [
-        "Developed and designed both large-scale (Monolithic) and smaller, separate (Microservice) applications using .NET.",
-        "Built responsive user interfaces and web pages using modern front-end technologies (HTML5, CSS3, Angular).",
-        "Improved system reliability by reviewing code, finding, and fixing software errors, and providing live production support.",
-        "Managed the process of deploying applications to Linux servers for both testing and live production (DevOps contribution).",
+        "● Developed and maintained monolithic and microservice applications using .NET, following  clean architecture and solid principles.",
+        "● Designed and implemented RESTful APIs and backend services with a focus on scalability, performance optimization and maintainability.",
+        "● Utilized entity framework core for data access including LINQ optimization, migrations, database performance tuning and transactional consistency across SQL based databases.",
+        "● Built and integrated Angular based front-end applications ensuring responsive design, modular architecture and seamless API integration.",
+        "● Improved code quality and system reliability by proper code reviews and refactoring initiatives.",
+        "● Provided production support for live systems, performing root cause analysis, resolving high priority incidents and ensuring system reliability and uptime.",
+        "● Managed application deployment and release processes on Linux environments contributing to environment configuration and post deployment validation.",
+        "● Collaborated with product owners, QA and cross-functional teams to translate business requirements into technical solutions.",
       ],
     },
   ];
