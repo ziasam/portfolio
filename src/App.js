@@ -159,7 +159,7 @@ const HeroSection = ({ scrollToSection }) => {
         />
       </div>
       <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-2">Ziauddin Sameer Chowdhury</h1>
-      <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">Software Engineer</p>
+      <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">Senior Software Engineer</p>
 
       <div className="flex justify-center space-x-6 text-gray-500 dark:text-gray-400 mb-8">
         <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
@@ -254,14 +254,14 @@ const ExperienceSection = () => {
       title: "Senior Software Engineer",
       duration: "September 2022 - present",
       details: [
-        "● Developed and maintained monolithic and microservice applications using .NET, following  clean architecture and solid principles.",
-        "● Designed and implemented RESTful APIs and backend services with a focus on scalability, performance optimization and maintainability.",
-        "● Utilized entity framework core for data access including LINQ optimization, migrations, database performance tuning and transactional consistency across SQL based databases.",
-        "● Built and integrated Angular based front-end applications ensuring responsive design, modular architecture and seamless API integration.",
-        "● Improved code quality and system reliability by proper code reviews and refactoring initiatives.",
-        "● Provided production support for live systems, performing root cause analysis, resolving high priority incidents and ensuring system reliability and uptime.",
-        "● Managed application deployment and release processes on Linux environments contributing to environment configuration and post deployment validation.",
-        "● Collaborated with product owners, QA and cross-functional teams to translate business requirements into technical solutions.",
+        "Developed and maintained monolithic and microservice applications using .NET, following  clean architecture and solid principles.",
+        "Designed and implemented RESTful APIs and backend services with a focus on scalability, performance optimization and maintainability.",
+        "Utilized entity framework core for data access including LINQ optimization, migrations, database performance tuning and transactional consistency across SQL based databases.",
+        "Built and integrated Angular based front-end applications ensuring responsive design, modular architecture and seamless API integration.",
+        "Improved code quality and system reliability by proper code reviews and refactoring initiatives.",
+        "Provided production support for live systems, performing root cause analysis, resolving high priority incidents and ensuring system reliability and uptime.",
+        "Managed application deployment and release processes on Linux environments contributing to environment configuration and post deployment validation.",
+        "Collaborated with product owners, QA and cross-functional teams to translate business requirements into technical solutions.",
       ],
     },
   ];
